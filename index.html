@@ -1,770 +1,192 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Amir Khan | Computer Science & AI</title>
-  <meta name="description" content="Personal portfolio and academic CV of Amir Khan, Computer Science graduate from Thal University Bhakkar, Pakistan.">
-  <meta name="author" content="Amir Khan">
-  <meta name="theme-color" content="#14263d">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy: #14263d;
-      --blue: #2563eb;
-      --light-blue: #eaf1ff;
-      --text: #243247;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --background: #f1f5f9;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", Arial, sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    a {
-      color: var(--blue);
-      text-decoration: none;
-      overflow-wrap: anywhere;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .topbar {
-      max-width: 1150px;
-      margin: 24px auto 16px;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .brand {
-      color: var(--navy);
-      font-weight: 800;
-      font-size: 18px;
-      letter-spacing: -0.5px;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 9px 15px;
-      border-radius: 8px;
-      font: inherit;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: white;
-      color: var(--navy);
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      color: white;
-      border-color: var(--blue);
-    }
-
-    .layout {
-      width: min(1150px, calc(100% - 40px));
-      margin: 0 auto 40px;
-      display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
-      gap: 24px;
-      align-items: start;
-    }
-
-    .sidebar {
-      background: var(--navy);
-      color: #e2e8f0;
-      border-radius: 16px;
-      padding: 30px 24px;
-      position: sticky;
-      top: 20px;
-      overflow: hidden;
-    }
-
-    .profile-photo {
-      display: block;
-      width: 155px;
-      height: 155px;
-      margin: 0 auto 20px;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 50%;
-      border: 4px solid rgba(255,255,255,.2);
-      background: #263c56;
-    }
-
-    .sidebar h1 {
-      color: white;
-      text-align: center;
-      font-size: 27px;
-      letter-spacing: -1px;
-      line-height: 1.3;
-    }
-
-    .tagline {
-      text-align: center;
-      color: #b9cbe0;
-      font-size: 12px;
-      margin: 10px 0 20px;
-      line-height: 1.8;
-    }
-
-    .sidebar-section {
-      border-top: 1px solid #344860;
-      padding-top: 18px;
-      margin-top: 18px;
-    }
-
-    .sidebar h2 {
-      color: #93c5fd;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .contact-item {
-      margin-bottom: 12px;
-      font-size: 12px;
-      line-height: 1.6;
-      overflow-wrap: anywhere;
-    }
-
-    .contact-item strong {
-      display: block;
-      color: white;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .sidebar a {
-      color: #c8dcff;
-    }
-
-    .skill-group {
-      margin-bottom: 12px;
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    .skill-group strong {
-      display: block;
-      color: white;
-      margin-bottom: 2px;
-    }
-
-    .language {
-      font-size: 12px;
-      margin-bottom: 7px;
-    }
-
-    .main {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 25px 28px;
-      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.025);
-      break-inside: avoid;
-    }
-
-    .section-title {
-      color: var(--navy);
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-title::before {
-      content: "";
-      width: 4px;
-      height: 22px;
-      flex-shrink: 0;
-      background: var(--blue);
-      border-radius: 4px;
-    }
-
-    .profile-text {
-      color: #475569;
-      font-size: 13px;
-      line-height: 1.95;
-    }
-
-    .interest-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .pill {
-      display: inline-block;
-      background: var(--light-blue);
-      color: #1d4ed8;
-      padding: 6px 11px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .entry {
-      position: relative;
-      padding: 0 0 20px 18px;
-      margin-left: 4px;
-      border-left: 2px solid var(--border);
-    }
-
-    .entry:last-child {
-      padding-bottom: 0;
-      border-left-color: transparent;
-    }
-
-    .entry::before {
-      content: "";
-      position: absolute;
-      left: -6px;
-      top: 7px;
-      width: 10px;
-      height: 10px;
-      background: var(--blue);
-      border: 2px solid white;
-      border-radius: 50%;
-      box-shadow: 0 0 0 1px var(--blue);
-    }
-
-    .entry h3 {
-      color: #1e293b;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.6;
-    }
-
-    .entry-meta {
-      color: var(--muted);
-      font-size: 12px;
-      margin: 3px 0 8px;
-    }
-
-    .entry p, .entry li {
-      color: #475569;
-      font-size: 12px;
-      line-height: 1.85;
-    }
-
-    .entry ul {
-      padding-left: 18px;
-      margin-top: 7px;
-    }
-
-    .entry li {
-      padding-left: 2px;
-      margin-bottom: 4px;
-    }
-
-    .status {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 5px 9px;
-      border-radius: 5px;
-      background: #ecfdf5;
-      color: #047857;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .tech {
-      color: #64748b;
-      font-size: 11px;
-      margin: 6px 0;
-    }
-
-    .coursework {
-      margin-top: 9px;
-      color: #64748b;
-      font-size: 11px;
-      line-height: 1.8;
-    }
-
-    .footer {
-      text-align: center;
-      color: #94a3b8;
-      font-size: 11px;
-      padding: 0 15px 28px;
-    }
-
-    @media (max-width: 800px) {
-      .layout {
-        grid-template-columns: 1fr;
-        width: min(100% - 28px, 650px);
-        gap: 16px;
-      }
-
-      .sidebar {
-        position: static;
-        padding: 26px 22px;
-      }
-
-      .profile-photo {
-        width: 135px;
-        height: 135px;
-      }
-
-      .sidebar h1 {
-        font-size: 25px;
-      }
-
-      .topbar {
-        margin-top: 16px;
-        padding: 0 14px;
-      }
-
-      .card {
-        padding: 22px 20px;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .brand {
-        font-size: 15px;
-      }
-
-      .btn {
-        padding: 8px 10px;
-        font-size: 11px;
-      }
-
-      .topbar {
-        gap: 8px;
-      }
-    }
-
-    @media print {
-      @page {
-        size: A4;
-        margin: 10mm;
-      }
-
-      body {
-        background: white;
-        font-size: 10px;
-        print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
-      }
-
-      .topbar, .footer {
-        display: none;
-      }
-
-      .layout {
-        width: 100%;
-        margin: 0;
-        grid-template-columns: 27% minmax(0, 1fr);
-        gap: 12px;
-      }
-
-      .sidebar {
-        position: static;
-        padding: 18px 14px;
-        border-radius: 8px;
-      }
-
-      .profile-photo {
-        width: 100px;
-        height: 100px;
-      }
-
-      .sidebar h1 {
-        font-size: 20px;
-      }
-
-      .card {
-        padding: 15px;
-        box-shadow: none;
-        border-radius: 8px;
-      }
-
-      .main {
-        gap: 10px;
-      }
-
-      .section-title {
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
-
-      .entry {
-        padding-bottom: 12px;
-      }
-
-      a {
-        color: inherit;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amir Khan | Computer Science &amp; AI</title>
+<meta name="description" content="Personal academic page of Amir Khan, Computer Science graduate from Thal University Bhakkar, Pakistan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--text:#555;--head:#4a4a4a;--link:#5b8bd6;--line:#e6e6e6;--accent:#4a86d8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Serif",Georgia,serif;color:var(--text);background:#fff;font-size:16px;line-height:1.8}
+a{color:var(--link);text-decoration:none;overflow-wrap:anywhere}
+a:hover{text-decoration:underline}
+.sidebar{position:fixed;inset:0 auto 0 0;width:380px;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 24px}
+.photo{width:130px;height:130px;border-radius:50%;object-fit:cover;margin-bottom:14px}
+.sidebar h1{font-size:34px;color:var(--head);letter-spacing:1px;line-height:1.3;margin-bottom:12px}
+.sidebar p{font-size:16px;line-height:1.75}
+.links{margin-top:26px;font-size:15px}
+.links a{color:var(--text);margin:0 5px;white-space:nowrap}
+.links i{margin-right:3px}
+.credit{position:absolute;bottom:12px;left:0;right:0;font-size:11px;line-height:1.6}
+.content{margin-left:380px}
+.tabs{display:flex;gap:24px;padding:0 30px;height:58px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:2}
+.tab{background:none;border:0;border-bottom:2px solid transparent;font:inherit;font-size:16px;color:var(--text);cursor:pointer;padding:0 2px}
+.tab[aria-selected="true"]{color:var(--head);border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.panel{padding:20px 30px 60px;max-width:900px}
+.panel[hidden]{display:none}
+h2{font-size:24px;color:var(--head);margin:34px 0 16px;line-height:1.4}
+h2:first-child{margin-top:20px}
+h3{font-size:17px;color:var(--head);line-height:1.6}
+.meta{font-size:14px;color:#888;margin-bottom:4px}
+ul{padding-left:22px;margin:6px 0}
+ul ul{list-style:circle}
+li{margin-bottom:3px}
+.item{margin-bottom:22px}
+.badge{display:inline-block;font-size:13px;color:#2f855a;border:1px solid #b7e0c8;border-radius:4px;padding:0 8px;margin-top:4px}
+@media(max-width:860px){
+.sidebar{position:static;width:100%;border-right:0;border-bottom:1px solid var(--line);padding:36px 20px 44px}
+.credit{display:none}
+.content{margin-left:0}
+.tabs,.panel{padding-left:20px;padding-right:20px}
+}
+@media print{
+.sidebar{position:static;width:100%;border:0;padding:10px}
+.content{margin:0}.tabs,.credit,.noprint{display:none}
+.panel[hidden]{display:block}
+}
+</style>
 </head>
-
 <body>
 
-  <header class="topbar">
-    <a class="brand" href="#">AMIR KHAN<span style="color:#2563eb">.</span></a>
-    <div class="top-actions">
-      <a class="btn" href="https://github.com/amirkhan421"
-         target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-      <button class="btn btn-primary" onclick="window.print()">
-        Download CV / Print
-      </button>
-    </div>
-  </header>
+<aside class="sidebar">
+  <!-- Put your photo beside index.html as profile.jpg -->
+  <img class="photo" src="profile.jpg" alt="Portrait of Amir Khan" onerror="this.style.display='none'">
+  <h1>Amir Khan</h1>
+  <p>Computer Science Graduate<br>
+  <strong>Interests</strong> : Machine Learning, Databases<br>
+  Thal University Bhakkar,<br>Punjab, Pakistan</p>
+  <div class="links">
+    <a href="https://github.com/amirkhan421" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>Github</a>
+    <a href="mailto:amirkhan421.official@gmail.com"><i class="fa-solid fa-envelope"></i>Email</a>
+    <a href="https://www.linkedin.com/in/amir-khan-79903736b" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+    <a class="noprint" href="#" onclick="window.print();return false"><i class="fa-solid fa-print"></i>CV</a>
+  </div>
+  <div class="credit">&copy; <span id="year"></span> Amir Khan</div>
+</aside>
 
-  <div class="layout">
-
-    <!-- LEFT SIDEBAR -->
-    <aside class="sidebar">
-
-      <!-- Upload your photo as profile.jpg beside index.html -->
-      <img
-        class="profile-photo"
-        src="profile.jpg"
-        alt="Portrait of Amir Khan"
-        onerror="this.style.display='none';"
-      >
-
-      <h1>Amir Khan</h1>
-
-      <p class="tagline">
-        Computer Science<br>
-        Machine Learning &amp; AI<br>
-        Databases &amp; Software Development
-      </p>
-
-      <div class="sidebar-section">
-        <h2>Contact</h2>
-
-        <div class="contact-item">
-          <strong>Location</strong>
-          Bhakkar, Punjab, Pakistan
-        </div>
-
-        <div class="contact-item">
-          <strong>Phone</strong>
-          <a href="tel:+923256757698">+92 325 6757698</a>
-        </div>
-
-        <div class="contact-item">
-          <strong>Email</strong>
-          <a href="mailto:amirkhan421.official@gmail.com">
-            amirkhan421.official@gmail.com
-          </a>
-        </div>
-
-        <div class="contact-item">
-          <strong>GitHub</strong>
-          <a href="https://github.com/amirkhan421"
-             target="_blank" rel="noopener noreferrer">
-            github.com/amirkhan421
-          </a>
-        </div>
-
-        <div class="contact-item">
-          <strong>LinkedIn</strong>
-          <a href="https://www.linkedin.com/in/amir-khan-79903736b"
-             target="_blank" rel="noopener noreferrer">
-            Amir Khan
-          </a>
-        </div>
-      </div>
-
-      <div class="sidebar-section">
-        <h2>Technical Skills</h2>
-
-        <div class="skill-group">
-          <strong>Programming</strong>
-          Python, SQL, PHP, JavaScript
-        </div>
-
-        <div class="skill-group">
-          <strong>Machine Learning &amp; Data</strong>
-          Scikit-learn, Pandas, NumPy, Jupyter Notebook, Data Analysis
-        </div>
-
-        <div class="skill-group">
-          <strong>Databases</strong>
-          MySQL, Oracle Database, MongoDB, Oracle APEX, PL/SQL
-        </div>
-
-        <div class="skill-group">
-          <strong>Web &amp; Tools</strong>
-          Vue.js, HTML5, CSS3, Bootstrap, Git, VS Code
-        </div>
-      </div>
-
-      <div class="sidebar-section">
-        <h2>Languages</h2>
-        <p class="language">English — Professional (B2)</p>
-        <p class="language">Urdu — Proficient (C1)</p>
-        <p class="language">Saraiki — Native</p>
-      </div>
-
-      <div class="sidebar-section">
-        <h2>Research Interests</h2>
-        <p class="language">Machine Learning</p>
-        <p class="language">Database Systems</p>
-        <p class="language">Data Analysis</p>
-        <p class="language">Applied AI</p>
-      </div>
-
-    </aside>
-
-    <!-- RIGHT MAIN CONTENT -->
-    <main class="main">
-
-      <section class="card">
-        <h2 class="section-title">Profile</h2>
-        <p class="profile-text">
-          I am a Computer Science graduate with a CGPA of 3.57/4.0
-          and a strong foundation in Machine Learning, database systems,
-          and software development. I have hands-on experience with
-          Python, Scikit-learn, SQL, and web technologies, along with
-          practical exposure to enterprise data systems through my
-          internship at LESCO. I am passionate about learning emerging
-          technologies, developing data-driven solutions, and applying
-          my technical skills to real-world software and computing
-          problems.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">Education</h2>
-
-        <div class="entry">
-          <h3>BS Computer Science</h3>
-          <div class="entry-meta">
-            Oct 2022 – Jun 2026 · Thal University Bhakkar, Pakistan
-          </div>
-          <p><strong>CGPA:</strong> 3.57 / 4.00</p>
-          <p class="coursework">
-            <strong>Relevant Coursework:</strong> Artificial Intelligence,
-            Machine Learning, Database Systems, Data Structures and
-            Algorithms, Distributed Computing, Software Engineering,
-            Cybersecurity, Computer Networks, and Operating Systems.
-          </p>
-          <p class="coursework">
-            <strong>Final Year Project:</strong> Hospital Management
-            System — full-stack web application.
-          </p>
-        </div>
-
-        <div class="entry">
-          <h3>Intermediate (F.Sc)</h3>
-          <div class="entry-meta">2020 – 2022 · BISE Sargodha</div>
-          <p>1st Division · 944 / 1100</p>
-        </div>
-
-        <div class="entry">
-          <h3>Matriculation (SSC)</h3>
-          <div class="entry-meta">2018 – 2020 · BISE Sargodha</div>
-          <p>1st Division · 1012 / 1100</p>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">Publications &amp; Research</h2>
-
-        <div class="entry">
-          <h3>
-            A Comparative Benchmark of SQL and NoSQL Databases for
-            Read/Write Performance Under Different Indexing and Cache
-            Conditions
-          </h3>
-
-          <div class="entry-meta">
-            Amir Khan, Sawaira Gull, Arooj Shahzadi
-          </div>
-
-          <p>
-            <em>KIET Journal of Computing and Information Sciences</em>
-          </p>
-
-          <p class="tech">
-            Journal website:
-            <a href="https://kjcisjournal.kiet.edu.pk/"
-               target="_blank" rel="noopener noreferrer">
-              kjcisjournal.kiet.edu.pk
-            </a>
-          </p>
-
-          <span class="status">Manuscript submitted — under review</span>
-
-          <p class="coursework">
-            <strong>Corresponding author:</strong> Amir Khan
-          </p>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">Projects</h2>
-
-        <div class="entry">
-          <h3>Hospital Management System</h3>
-          <div class="entry-meta">Final Year Project</div>
-
-          <p>
-            <a href="https://wellcarehospital.gamer.gd/"
-               target="_blank" rel="noopener noreferrer">
-              View live project ↗
-            </a>
-          </p>
-
-          <p class="tech">
-            PHP · Vue.js · MySQL · HTML5 · CSS3 · JavaScript · Bootstrap
-          </p>
-
-          <ul>
-            <li>
-              Designed and deployed a full-stack, web-based hospital
-              management system with secure authentication and
-              role-based access.
-            </li>
-            <li>
-              Implemented patient record management, appointment
-              scheduling, and complete CRUD operations on a relational
-              MySQL database.
-            </li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <h3>Machine Learning Classification Pipeline</h3>
-
-          <p class="tech">
-            Python · Scikit-learn · Pandas · NumPy · Jupyter Notebook · Git
-          </p>
-
-          <p>
-            <a href="https://github.com/amirkhan421"
-               target="_blank" rel="noopener noreferrer">
-              View GitHub profile and projects ↗
-            </a>
-          </p>
-
-          <ul>
-            <li>
-              Built an end-to-end supervised learning pipeline covering
-              data preprocessing, feature engineering, Random Forest,
-              and SVM models.
-            </li>
-            <li>
-              Tuned hyperparameters with GridSearchCV, achieving
-              92%+ accuracy — an 8% improvement over the baseline model.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">Internship Experience</h2>
-
-        <div class="entry">
-          <h3>IT Directorate Intern</h3>
-          <div class="entry-meta">
-            LESCO — Lahore Electric Supply Company, Lahore, Pakistan
-          </div>
-
-          <ul>
-            <li>
-              Assisted with software and database-related tasks
-              within the IT Directorate.
-            </li>
-            <li>
-              Worked with Oracle Database and SQL on enterprise
-              data systems.
-            </li>
-            <li>
-              Collaborated with technical teams on enterprise
-              applications.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">Certifications</h2>
-
-        <div class="entry">
-          <h3>Generative AI Application Developer Certificate</h3>
-          <div class="entry-meta">NCEAC–HEC / ULEF, USA · May 2026</div>
-          <p>Top Performer</p>
-        </div>
-
-        <div class="entry">
-          <h3>Oracle APEX Cloud Developer Certified Professional</h3>
-          <div class="entry-meta">Oracle</div>
-        </div>
-
-        <div class="entry">
-          <h3>Database Engineer Professional Certificate</h3>
-          <div class="entry-meta">Meta</div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">References</h2>
-        <p class="profile-text">References available on request.</p>
-      </section>
-
-    </main>
+<div class="content">
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t-bio" aria-controls="bio" aria-selected="true">Biography</button>
+    <button class="tab" role="tab" id="t-pub" aria-controls="pub" aria-selected="false">Publication</button>
   </div>
 
-  <footer class="footer">
-    © <span id="year"></span> Amir Khan · Personal Portfolio &amp; Academic CV
-  </footer>
+  <main>
+  <section class="panel" id="bio" role="tabpanel" aria-labelledby="t-bio">
+    <h2>About Me</h2>
+    <p>Hello, I'm Amir Khan, a Computer Science graduate (BS, CGPA 3.57/4.0) from
+    <a href="#">Thal University Bhakkar</a>, Pakistan. I have a strong foundation in machine learning,
+    database systems, and software development, with hands-on experience in Python, Scikit-learn, SQL,
+    and web technologies. I also gained practical exposure to enterprise data systems through my internship at LESCO.</p>
 
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+    <h2>Research Interest</h2>
+    <ul>
+      <li>Machine Learning
+        <ul><li>Supervised learning pipelines</li><li>Applied AI</li></ul></li>
+      <li>Database Systems
+        <ul><li>SQL vs NoSQL performance benchmarking</li></ul></li>
+      <li>Data Analysis</li>
+    </ul>
 
+    <h2>Education</h2>
+    <div class="item">
+      <h3>BS Computer Science, Thal University Bhakkar</h3>
+      <div class="meta">Oct 2022 – Jun 2026 · CGPA 3.57 / 4.00</div>
+      <p>Coursework: Artificial Intelligence, Machine Learning, Database Systems, Data Structures and Algorithms,
+      Distributed Computing, Software Engineering, Cybersecurity, Computer Networks, Operating Systems.</p>
+    </div>
+    <div class="item">
+      <h3>Intermediate (F.Sc), BISE Sargodha</h3>
+      <div class="meta">2020 – 2022 · 1st Division · 944 / 1100</div>
+    </div>
+    <div class="item">
+      <h3>Matriculation (SSC), BISE Sargodha</h3>
+      <div class="meta">2018 – 2020 · 1st Division · 1012 / 1100</div>
+    </div>
+
+    <h2>Projects</h2>
+    <div class="item">
+      <h3>Hospital Management System <span class="meta">(Final Year Project)</span></h3>
+      <div class="meta">PHP, Vue.js, MySQL, HTML5, CSS3, JavaScript, Bootstrap ·
+        <a href="https://wellcarehospital.gamer.gd/" target="_blank" rel="noopener noreferrer">Live project</a></div>
+      <ul>
+        <li>Designed and deployed a full-stack hospital management system with secure authentication and role-based access.</li>
+        <li>Implemented patient records, appointment scheduling, and CRUD operations on a relational MySQL database.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <h3>Machine Learning Classification Pipeline</h3>
+      <div class="meta">Python, Scikit-learn, Pandas, NumPy, Jupyter Notebook, Git ·
+        <a href="https://github.com/amirkhan421" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+      <ul>
+        <li>Built an end-to-end supervised pipeline: preprocessing, feature engineering, Random Forest and SVM.</li>
+        <li>Tuned hyperparameters with GridSearchCV, reaching 92%+ accuracy, an 8% gain over the baseline.</li>
+      </ul>
+    </div>
+
+    <h2>Internship</h2>
+    <div class="item">
+      <h3>IT Directorate Intern, LESCO</h3>
+      <div class="meta">Lahore Electric Supply Company, Lahore, Pakistan</div>
+      <ul>
+        <li>Assisted with software and database-related tasks within the IT Directorate.</li>
+        <li>Worked with Oracle Database and SQL on enterprise data systems.</li>
+        <li>Collaborated with technical teams on enterprise applications.</li>
+      </ul>
+    </div>
+
+    <h2>Certifications</h2>
+    <ul>
+      <li>Generative AI Application Developer Certificate, NCEAC–HEC / ULEF, USA (May 2026), Top Performer</li>
+      <li>Oracle APEX Cloud Developer Certified Professional, Oracle</li>
+      <li>Database Engineer Professional Certificate, Meta</li>
+    </ul>
+
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Programming:</strong> Python, SQL, PHP, JavaScript</li>
+      <li><strong>Machine Learning &amp; Data:</strong> Scikit-learn, Pandas, NumPy, Jupyter Notebook</li>
+      <li><strong>Databases:</strong> MySQL, Oracle Database, MongoDB, Oracle APEX, PL/SQL</li>
+      <li><strong>Web &amp; Tools:</strong> Vue.js, HTML5, CSS3, Bootstrap, Git, VS Code</li>
+      <li><strong>Languages:</strong> English (B2), Urdu (C1), Saraiki (native)</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>Bhakkar, Punjab, Pakistan · <a href="tel:+923256757698">+92 325 6757698</a> ·
+    <a href="mailto:amirkhan421.official@gmail.com">amirkhan421.official@gmail.com</a><br>
+    References available on request.</p>
+  </section>
+
+  <section class="panel" id="pub" role="tabpanel" aria-labelledby="t-pub" hidden>
+    <h2>Publications</h2>
+    <div class="item">
+      <h3>A Comparative Benchmark of SQL and NoSQL Databases for Read/Write Performance Under Different Indexing and Cache Conditions</h3>
+      <div class="meta">Amir Khan*, Sawaira Gull, Arooj Shahzadi (* corresponding author)</div>
+      <p><em>KIET Journal of Computing and Information Sciences</em> ·
+        <a href="https://kjcisjournal.kiet.edu.pk/" target="_blank" rel="noopener noreferrer">Journal website</a></p>
+      <span class="badge">Manuscript submitted, under review</span>
+    </div>
+  </section>
+  </main>
+</div>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const tabs=document.querySelectorAll(".tab");
+function show(id){
+  tabs.forEach(t=>{
+    const on=t.getAttribute("aria-controls")===id;
+    t.setAttribute("aria-selected",on);
+    document.getElementById(t.getAttribute("aria-controls")).hidden=!on;
+  });
+  window.scrollTo(0,0);
+}
+tabs.forEach(t=>t.addEventListener("click",()=>show(t.getAttribute("aria-controls"))));
+</script>
 </body>
 </html>
